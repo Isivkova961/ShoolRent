@@ -1,10 +1,10 @@
 object fRentRegistr: TfRentRegistr
-  Left = 441
-  Top = 311
+  Left = 524
+  Top = 449
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1047#1072#1087#1080#1089#1100' '#1085#1072' '#1087#1088#1080#1084#1077#1088#1082#1091
-  ClientHeight = 285
+  ClientHeight = 268
   ClientWidth = 333
   Color = clBtnFace
   Font.Charset = RUSSIAN_CHARSET
@@ -31,13 +31,13 @@ object fRentRegistr: TfRentRegistr
     Left = 0
     Top = 41
     Width = 333
-    Height = 197
+    Height = 194
     Align = alClient
     Color = clGradientInactiveCaption
     TabOrder = 1
     object lTime: TLabel
       Left = 24
-      Top = 24
+      Top = 16
       Width = 41
       Height = 17
       Caption = #1042#1088#1077#1084#1103
@@ -50,7 +50,7 @@ object fRentRegistr: TfRentRegistr
     end
     object lFam: TLabel
       Left = 24
-      Top = 56
+      Top = 48
       Width = 56
       Height = 17
       Caption = #1060#1072#1084#1080#1083#1080#1103
@@ -63,7 +63,7 @@ object fRentRegistr: TfRentRegistr
     end
     object lSize: TLabel
       Left = 24
-      Top = 88
+      Top = 80
       Width = 46
       Height = 17
       Caption = #1056#1072#1079#1084#1077#1088
@@ -76,7 +76,7 @@ object fRentRegistr: TfRentRegistr
     end
     object lRise: TLabel
       Left = 160
-      Top = 88
+      Top = 80
       Width = 30
       Height = 17
       Caption = #1056#1086#1089#1090
@@ -89,7 +89,7 @@ object fRentRegistr: TfRentRegistr
     end
     object lStatus: TLabel
       Left = 24
-      Top = 120
+      Top = 112
       Width = 45
       Height = 17
       Caption = #1057#1090#1072#1090#1091#1089
@@ -184,31 +184,22 @@ object fRentRegistr: TfRentRegistr
       ParentFont = False
       OnClick = sbCancelClick
     end
-    object meTime: TMaskEdit
-      Left = 88
-      Top = 16
-      Width = 49
-      Height = 25
-      EditMask = '99:99;1;_'
-      MaxLength = 5
-      TabOrder = 0
-      Text = '  :  '
-    end
     object eFam: TEdit
       Left = 88
-      Top = 48
+      Top = 40
       Width = 225
       Height = 25
-      TabOrder = 1
+      TabOrder = 0
       OnKeyPress = eFamKeyPress
     end
     object cobSize: TComboBox
       Left = 88
-      Top = 80
+      Top = 72
       Width = 65
       Height = 25
+      Style = csDropDownList
       ItemHeight = 17
-      TabOrder = 2
+      TabOrder = 1
       Items.Strings = (
         '36'
         '36-38'
@@ -238,15 +229,15 @@ object fRentRegistr: TfRentRegistr
     end
     object eRise: TEdit
       Left = 200
-      Top = 80
+      Top = 72
       Width = 33
       Height = 25
-      TabOrder = 3
+      TabOrder = 2
       OnKeyPress = eRiseKeyPress
     end
     object cebStatus: TCheckBox
       Left = 88
-      Top = 120
+      Top = 112
       Width = 97
       Height = 17
       Caption = #1055#1088#1080#1096#1083#1072
@@ -256,14 +247,23 @@ object fRentRegistr: TfRentRegistr
       Font.Name = 'Times New Roman'
       Font.Style = []
       ParentFont = False
+      TabOrder = 3
+    end
+    object cobTime: TComboBox
+      Left = 88
+      Top = 8
+      Width = 65
+      Height = 25
+      Style = csDropDownList
+      ItemHeight = 17
       TabOrder = 4
     end
   end
   object pMessage: TPanel
     Left = 0
-    Top = 238
+    Top = 235
     Width = 333
-    Height = 47
+    Height = 33
     Align = alBottom
     Color = clGradientActiveCaption
     TabOrder = 2

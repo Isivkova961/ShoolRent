@@ -15,7 +15,6 @@ object fMainRent: TfMainRent
   OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
-  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 17
@@ -177,6 +176,7 @@ object fMainRent: TfMainRent
       Caption = #1060#1072#1081#1083
       object nSetting: TMenuItem
         Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+        OnClick = nSettingClick
       end
     end
   end

@@ -18,18 +18,21 @@ type
     lStatus: TLabel;
     sbOK: TSpeedButton;
     sbCancel: TSpeedButton;
-    meTime: TMaskEdit;
     eFam: TEdit;
     cobSize: TComboBox;
     eRise: TEdit;
     cebStatus: TCheckBox;
     lMessage: TLabel;
+    cobTime: TComboBox;
     procedure eRiseKeyPress(Sender: TObject; var Key: Char);
     procedure eFamKeyPress(Sender: TObject; var Key: Char);
     procedure sbCancelClick(Sender: TObject);
     procedure sbOKClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure LoadTable;
+    procedure LoadList;
+    procedure LoadData(Time_, Fam_, Size_, Rise_: string; Status: boolean);
+    procedure DataLoad;
   private
     { Private declarations }
   public
@@ -38,6 +41,8 @@ type
 
 var
   fRentRegistr: TfRentRegistr;
+  TimeReg, FamReg, SizeReg, RiseReg: string;
+  StatusReg: boolean;
 
 implementation
 
@@ -68,7 +73,7 @@ procedure TfRentRegistr.sbOKClick(Sender: TObject);
       begin
         adoqRegistr.FieldByName('fam').Value := eFam.Text;
         adoqRegistr.FieldByName('date_fit').Value := fMainRent.lDate.Caption;
-        adoqRegistr.FieldByName('time_fit').Value := meTime.Text;
+        adoqRegistr.FieldByName('time_fit').Value := cobTime.Text;
         adoqRegistr.FieldByName('size').Value := cobSize.Text;
         adoqRegistr.FieldByName('rise').Value := eRise.Text;
         adoqRegistr.FieldByName('status').Value := cebStatus.Checked;
@@ -78,7 +83,7 @@ procedure TfRentRegistr.sbOKClick(Sender: TObject);
 begin
   with dmRent do
     begin
-      if adoqRegistr.Locate('time_fit', meTime.Text, []) then
+      if adoqRegistr.Locate('time_fit', cobTime.Text, []) then
         begin
           adoqRegistr.Edit;
           WriteData;
@@ -91,14 +96,18 @@ begin
           adoqRegistr.Post;
         end;
     end;
+
   fMainRent.LoadRegistr;
   fMainRent.LoadMonth;
+  
   Close;
 end;
 
 procedure TfRentRegistr.FormShow(Sender: TObject);
 begin
+  LoadList;
   LoadTable;
+  DataLoad;
 end;
 
 procedure TfRentRegistr.LoadTable;
@@ -112,10 +121,33 @@ begin
       adoqRegistr.SQL.Append('AND time_fit = :t_f');
 
       adoqRegistr.Parameters.ParamByName('d_f').Value := fMainRent.lDate.Caption;
-      adoqRegistr.Parameters.ParamByName('t_f').Value := meTime.Text;
+      adoqRegistr.Parameters.ParamByName('t_f').Value := cobTime.Text;
 
       adoqRegistr.Open;
     end;
+end;
+
+procedure TfRentRegistr.LoadList;
+begin
+  cobTime.Items := fMainRent.OpenHours;
+end;
+
+procedure TfRentRegistr.LoadData(Time_, Fam_, Size_, Rise_: string; Status: boolean);
+begin
+  TimeReg := Time_;
+  FamReg := Fam_;
+  SizeReg := Size_;
+  RiseReg := Rise_;
+  StatusReg := Status;
+end;
+
+procedure TfRentRegistr.DataLoad;
+begin
+  cobTime.ItemIndex := cobTime.Items.IndexOf(TimeReg);
+  eFam.Text := FamReg;
+  cobSize.ItemIndex := cobSize.Items.IndexOf(SizeReg);
+  eRise.Text := RiseReg;
+  cebStatus.Checked := StatusReg;
 end;
 
 end.

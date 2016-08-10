@@ -15,7 +15,6 @@ object fMainRent: TfMainRent
   OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
-  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 17
@@ -148,22 +147,6 @@ object fMainRent: TfMainRent
       OnDblClick = sgDayTimeDblClick
       OnDrawCell = sgDayTimeDrawCell
     end
-    object Memo1: TMemo
-      Left = 24
-      Top = 256
-      Width = 185
-      Height = 153
-      TabOrder = 1
-    end
-    object Button1: TButton
-      Left = 232
-      Top = 352
-      Width = 75
-      Height = 25
-      Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100
-      TabOrder = 2
-      OnClick = Button1Click
-    end
   end
   object pMessage: TPanel
     Left = 0
@@ -193,6 +176,7 @@ object fMainRent: TfMainRent
       Caption = #1060#1072#1081#1083
       object nSetting: TMenuItem
         Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+        OnClick = nSettingClick
       end
     end
   end

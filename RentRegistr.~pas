@@ -18,12 +18,12 @@ type
     lStatus: TLabel;
     sbOK: TSpeedButton;
     sbCancel: TSpeedButton;
-    meTime: TMaskEdit;
     eFam: TEdit;
     cobSize: TComboBox;
     eRise: TEdit;
     cebStatus: TCheckBox;
     lMessage: TLabel;
+    cobTime: TComboBox;
     procedure eRiseKeyPress(Sender: TObject; var Key: Char);
     procedure eFamKeyPress(Sender: TObject; var Key: Char);
     procedure sbCancelClick(Sender: TObject);
@@ -68,7 +68,7 @@ procedure TfRentRegistr.sbOKClick(Sender: TObject);
       begin
         adoqRegistr.FieldByName('fam').Value := eFam.Text;
         adoqRegistr.FieldByName('date_fit').Value := fMainRent.lDate.Caption;
-        adoqRegistr.FieldByName('time_fit').Value := meTime.Text;
+        adoqRegistr.FieldByName('time_fit').Value := cobTime.Text;
         adoqRegistr.FieldByName('size').Value := cobSize.Text;
         adoqRegistr.FieldByName('rise').Value := eRise.Text;
         adoqRegistr.FieldByName('status').Value := cebStatus.Checked;
@@ -91,7 +91,10 @@ begin
           adoqRegistr.Post;
         end;
     end;
+
   fMainRent.LoadRegistr;
+  fMainRent.LoadMonth;
+  
   Close;
 end;
 
@@ -111,7 +114,7 @@ begin
       adoqRegistr.SQL.Append('AND time_fit = :t_f');
 
       adoqRegistr.Parameters.ParamByName('d_f').Value := fMainRent.lDate.Caption;
-      adoqRegistr.Parameters.ParamByName('t_f').Value := meTime.Text;
+      adoqRegistr.Parameters.ParamByName('t_f').Value := cobTime.Text;
 
       adoqRegistr.Open;
     end;
