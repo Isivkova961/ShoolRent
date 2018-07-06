@@ -26,6 +26,9 @@ type
     lDate: TLabel;
     lMessage: TLabel;
     nSetting: TMenuItem;
+    nSprav: TMenuItem;
+    nDress: TMenuItem;
+    N2: TMenuItem;
     procedure LoadMonth;
     procedure FormShow(Sender: TObject);
     procedure sgMonthDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -41,6 +44,7 @@ type
     procedure LoadRegistr;
     procedure nSettingClick(Sender: TObject);
     procedure VivodTime(TimeHours: string; MinOne: integer);
+    procedure nDressClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -56,7 +60,7 @@ var
 
 implementation
 
-uses RentRegistr, RentDM, RentSetting;
+uses RentRegistr, RentDM, RentSetting, RentDress;
 
 {$R *.dfm}
 
@@ -485,6 +489,11 @@ begin
           Inc(Hours1);
         end;
     end;
+end;
+
+procedure TfMainRent.nDressClick(Sender: TObject);
+begin
+  fRentDress.ShowModal;
 end;
 
 end.

@@ -179,6 +179,15 @@ object fMainRent: TfMainRent
         OnClick = nSettingClick
       end
     end
+    object nSprav: TMenuItem
+      Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+      object nDress: TMenuItem
+        Caption = #1055#1083#1072#1090#1100#1103
+      end
+      object N2: TMenuItem
+        Caption = #1060#1072#1088#1090#1091#1082#1080
+      end
+    end
   end
   object ilRent: TImageList
     Left = 528

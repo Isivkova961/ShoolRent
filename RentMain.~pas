@@ -26,6 +26,9 @@ type
     lDate: TLabel;
     lMessage: TLabel;
     nSetting: TMenuItem;
+    nSprav: TMenuItem;
+    nDress: TMenuItem;
+    N2: TMenuItem;
     procedure LoadMonth;
     procedure FormShow(Sender: TObject);
     procedure sgMonthDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -45,13 +48,14 @@ type
   private
     { Private declarations }
   public
+    OpenHours: TStringList;
     { Public declarations }
   end;
 
 var
   fMainRent: TfMainRent;
   FTextHeight : Integer;
-  OpenHours: TStringList;
+
 
 implementation
 
@@ -382,15 +386,9 @@ end;
 
 procedure TfMainRent.sgDayTimeDblClick(Sender: TObject);
 begin
-  fRentRegistr.meTime.Text := sgDayTime.Cells[0, sgDayTime.Row];
-  fRentRegistr.eFam.Text := sgDayTime.Cells[1, sgDayTime.Row];
-  fRentRegistr.cobSize.Text := sgDayTime.Cells[2, sgDayTime.Row];
-  fRentRegistr.eRise.Text := sgDayTime.Cells[3, sgDayTime.Row];
-
-  if sgDayTime.Cells[4, sgDayTime.Row] = 'Пришла' then
-    fRentRegistr.cebStatus.Checked := true
-  else
-    fRentRegistr.cebStatus.Checked := false;
+  fRentRegistr.LoadData(sgDayTime.Cells[0, sgDayTime.Row], sgDayTime.Cells[1, sgDayTime.Row],
+                       sgDayTime.Cells[2, sgDayTime.Row], sgDayTime.Cells[3, sgDayTime.Row],
+                       (sgDayTime.Cells[4, sgDayTime.Row] = 'Пришла'));
 
   if sgDayTime.Cells[0, sgDayTime.Row] <> 'выходной' then
     fRentRegistr.ShowModal;

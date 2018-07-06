@@ -10,6 +10,12 @@ type
     adocRent: TADOConnection;
     adoqRegistr: TADOQuery;
     adoqRegCount: TADOQuery;
+    adoqDress: TADOQuery;
+    dsDress: TDataSource;
+    adoqFitting: TADOQuery;
+    dsFitting: TDataSource;
+    adoqApron: TADOQuery;
+    dsApron: TDataSource;
   private
     { Private declarations }
   public
